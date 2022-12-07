@@ -49,7 +49,7 @@ def main(args):
         if bool(args.test_phase):
             trainer.test(model, data.test_dataloader())
         else:
-            trainer.fit(model, data.train_dataloader, data.val_data_loader)
+            trainer.fit(model, data.train_dataloader, data.val_dataloader)
             trainer.test()
 
 
