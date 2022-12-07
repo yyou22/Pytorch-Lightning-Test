@@ -30,19 +30,19 @@ all_classifiers = {
 
 
 class CIFAR10Module(pl.LightningModule):
-    def __init__(self, hparams):
+    def __init__(self, hparams_):
         super().__init__()
-        self.hparams = hparams
+        self.hparams_ = hparams_
 
         #self.criterion = torch.nn.CrossEntropyLoss()
         self.accuracy = Accuracy()
 
-        self.model = all_classifiers[self.hparams.classifier]
+        self.model = all_classifiers[self.hparams_.classifier]
 
         self.optimizer = torch.optim.SGD(
             self.model.parameters(),
-            lr=self.hparams.learning_rate,
-            weight_decay=self.hparams.weight_decay,
+            lr=self.hparams_.learning_rate,
+            weight_decay=self.hparams_.weight_decay,
             momentum=0.9,
             nesterov=True,
         )
@@ -85,7 +85,7 @@ class CIFAR10Module(pl.LightningModule):
             #momentum=0.9,
             #nesterov=True,
         #)
-        total_steps = self.hparams.max_epochs * len(self.train_dataloader())
+        total_steps = self.hparams_.max_epochs * len(self.train_dataloader())
         scheduler = {
             "scheduler": WarmupCosineLR(
                 self.optimizer, warmup_epochs=total_steps * 0.3, max_epochs=total_steps
