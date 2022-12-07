@@ -35,7 +35,7 @@ class CIFAR10Module(pl.LightningModule):
         self.hparams_ = hparams_
 
         #self.criterion = torch.nn.CrossEntropyLoss()
-        self.accuracy = Accuracy()
+        self.accuracy = Accuracy(task='multiclass')
 
         self.model = all_classifiers[self.hparams_.classifier]
 
