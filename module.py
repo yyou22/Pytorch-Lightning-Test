@@ -59,7 +59,8 @@ class CIFAR10Module(pl.LightningModule):
                            epsilon=0.031,
                            perturb_steps=10,
                            beta=1.0)
-        accuracy = self.accuracy(predictions, labels)
+        self.accuracy.update(predictions, labels)
+        accuracy = self.accuracy
         return loss, accuracy * 100
 
     def training_step(self, batch, batch_nb):
