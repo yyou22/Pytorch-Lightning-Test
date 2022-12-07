@@ -30,7 +30,7 @@ def main(args):
             logger=logger if not bool(args.dev + args.test_phase) else None,
             gpus=-1,
             deterministic=True,
-            weights_summary=None,
+            #weights_summary=None,
             log_every_n_steps=1,
             max_epochs=args.max_epochs,
             checkpoint_callback=checkpoint,
