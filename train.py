@@ -33,7 +33,7 @@ def main(args):
             #weights_summary=None,
             log_every_n_steps=1,
             max_epochs=args.max_epochs,
-            checkpoint_callback=checkpoint,
+            callbacks=[checkpoint],
             precision=args.precision,
         )
 
